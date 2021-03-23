@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写节流函数</title>
+  <style>
+    .container {
+      width: 100%;
+      height: 300px;
+      line-height: 300px;
+      text-align: center;
+      color: #fff;
+      background-color: #444;
+      font-size: 66px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container"></div>
+
+  <script>
+    let container = document.querySelector('.container');
+    let count = 1;
+    // 定义 countAdd 为需要被频繁调用的函数，此处用count++代替
+    function countAdd() {
+      container.innerHTML = count++;
+    }
+    container.onmousemove = throttle(countAdd, 2000);
+
+    // 节流
+    // 原理：如果你持续触发事件，每隔一段时间，只执行一次事件
+    function throttle(func, delay) {
+      let timer = null;
+      return function () {
+        var context = this;
+        var args = arguments;
+        if (!timer) {
+          timer = setTimeout(function () {
+            func.apply(context, args);
+            timer = null;
+          }, delay)
+        }
+      }
+    }
+
+    // 实现步骤：
+    // 1. 通过setTimeout定时器设置延时时间，在第一次调用时，创建定时器，写入需要执行的函数。
+    // 2. 第二次调用时，清除前一个定时器并设置新的定时器。
+    // 3.如果这时前一个定时器暂未执行，则将其替换为新的定时器。目的在于在一定的时间内，保证多次函数的请求只执行最后一次调用
+  </script>
+
+</body>
+
+</html>

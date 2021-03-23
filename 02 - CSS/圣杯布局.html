@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣杯布局</title>
+  <!-- 核心点：左右固定，中间自适应，且中间需要先加载，所以.center放在前面 -->
+  <style>
+    body {
+      font-size: 40px;
+      color: #000;
+      text-align: center;
+      height: 150px;
+      line-height: 150px;
+    }
+
+    header,
+    footer {
+      height: 150px;
+      background-color: #EBC4AE;
+    }
+
+    .center,
+    .left,
+    .right {
+      float: left;
+    }
+
+    .container {
+      padding: 0 100px;
+    }
+
+    .left {
+      background-color: #98C2D0;
+      width: 100px;
+      margin-left: -100%;
+      position: relative;
+      left: -100px;
+    }
+
+    .center {
+      background-color: #E71014;
+      width: 100%;
+    }
+
+    .right {
+      background-color: #7EDD7B;
+      width: 100px;
+      margin-left: -100px;
+      position: relative;
+      right: -100px;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <header>头部</header>
+  <div class="container clearfix">
+    <div class="center">中间</div>
+    <div class="left">左侧</div>
+    <div class="right">右侧</div>
+  </div>
+  <footer>底部</footer>
+</body>
+
+</html>

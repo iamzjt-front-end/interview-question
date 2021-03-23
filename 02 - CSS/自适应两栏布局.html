@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .left {
+    height: 100px;
+    width: 100px;
+    float: left;
+    background: lightblue
+  }
+
+  .right {
+    height: 300px;
+    background: #eee;
+    overflow: hidden;
+  }
+</style>
+
+<body>
+  <div class="left">我是一个左浮动的元素</div>
+  <div class="right">我是一个没有设置浮动, 也没有触发 BFC 元素</div>
+</body>
+
+</html>
